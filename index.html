@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Madhav Agrawal — Portfolio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text-primary: #1a1a18;
+      --text-secondary: #5f5e5a;
+      --text-muted: #888780;
+      --surface-0: #f5f4f0;
+      --surface-1: #efefeb;
+      --surface-2: #ffffff;
+      --border: rgba(0,0,0,0.10);
+      --border-strong: rgba(0,0,0,0.18);
+      --border-stronger: rgba(0,0,0,0.28);
+      --bg-accent: #e6f1fb;
+      --text-accent: #185fa5;
+      --border-accent: #85b7eb;
+      --bg-success: #eaf3de;
+      --text-success: #3b6d11;
+      --border-success: #97c459;
+      --radius: 8px;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-primary: #e8e7e2;
+        --text-secondary: #a8a7a2;
+        --text-muted: #6b6a66;
+        --surface-0: #1a1a18;
+        --surface-1: #242420;
+        --surface-2: #2e2e2a;
+        --border: rgba(255,255,255,0.10);
+        --border-strong: rgba(255,255,255,0.18);
+        --border-stronger: rgba(255,255,255,0.28);
+        --bg-accent: #042c53;
+        --text-accent: #85b7eb;
+        --border-accent: #185fa5;
+        --bg-success: #173404;
+        --text-success: #97c459;
+        --border-success: #3b6d11;
+      }
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--surface-0);
+      color: var(--text-primary);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    a { color: inherit; }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--surface-2);
+      border-bottom: 0.5px solid var(--border);
+      z-index: 100;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 56px;
+    }
+    .nav-logo { font-size: 15px; font-weight: 500; letter-spacing: 0.02em; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--text-primary); }
+
+    /* LAYOUT */
+    .port { max-width: 860px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      padding: 4rem 0 3.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .hero-avatar {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      background: var(--bg-accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; font-weight: 500;
+      color: var(--text-accent);
+      flex-shrink: 0;
+      border: 0.5px solid var(--border-accent);
+    }
+    .hero-text h1 { font-size: 28px; font-weight: 500; margin-bottom: 6px; }
+    .tagline { font-size: 15px; color: var(--text-secondary); margin-bottom: 14px; }
+    .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .hero-tag {
+      font-size: 12px; padding: 4px 10px;
+      border-radius: var(--radius);
+      background: var(--surface-1);
+      border: 0.5px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    /* SECTIONS */
+    .section { padding: 3rem 0; border-bottom: 0.5px solid var(--border); }
+    .section:last-of-type { border-bottom: none; }
+    .section-label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 1.5rem;
+    }
+
+    /* ABOUT */
+    .about-text { font-size: 15px; color: var(--text-secondary); line-height: 1.75; max-width: 640px; }
+
+    /* SKILLS */
+    .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+    .skill-group {
+      background: var(--surface-1);
+      border: 0.5px solid var(--border);
+      border-radius: 12px; padding: 1rem 1.25rem;
+    }
+    .skill-group-title { font-size: 12px; font-weight: 500; color: var(--text-muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-pill {
+      font-size: 12px; padding: 3px 9px; border-radius: 20px;
+      background: var(--surface-2);
+      border: 0.5px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    /* EXPERIENCE */
+    .exp-item { display: flex; gap: 1.25rem; margin-bottom: 1.75rem; }
+    .exp-item:last-child { margin-bottom: 0; }
+    .exp-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-accent); margin-top: 7px; flex-shrink: 0; }
+    .exp-content h3 { font-size: 15px; font-weight: 500; margin-bottom: 2px; }
+    .exp-meta { font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+    .exp-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+    .proj-card {
+      background: var(--surface-2);
+      border: 0.5px solid var(--border);
+      border-radius: 12px; padding: 1.25rem;
+      display: flex; flex-direction: column; gap: 10px;
+      transition: border-color 0.15s;
+    }
+    .proj-card:hover { border-color: var(--border-strong); }
+    .proj-icon {
+      width: 36px; height: 36px; border-radius: var(--radius);
+      background: var(--bg-accent);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .proj-icon i { font-size: 18px; color: var(--text-accent); }
+    .proj-name { font-size: 15px; font-weight: 500; }
+    .proj-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .proj-tag {
+      font-size: 11px; padding: 2px 8px; border-radius: 20px;
+      background: var(--bg-success); color: var(--text-success);
+      border: 0.5px solid var(--border-success);
+    }
+
+    /* EDUCATION */
+    .edu-item {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 1rem 1.25rem;
+      background: var(--surface-1);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+    .edu-item:last-child { margin-bottom: 0; }
+    .edu-name { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+    .edu-sub { font-size: 13px; color: var(--text-secondary); }
+    .edu-year { font-size: 13px; color: var(--text-muted); white-space: nowrap; }
+
+    /* CONTACT */
+    .contact-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .contact-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 18px;
+      border: 0.5px solid var(--border-strong);
+      border-radius: var(--radius);
+      background: var(--surface-2);
+      color: var(--text-secondary);
+      font-size: 13px; text-decoration: none;
+      transition: all 0.15s;
+    }
+    .contact-btn:hover { background: var(--surface-1); border-color: var(--border-stronger); color: var(--text-primary); }
+    .contact-btn i { font-size: 16px; }
+
+    /* FOOTER */
+    footer { padding: 2rem 1.5rem; text-align: center; font-size: 12px; color: var(--text-muted); border-top: 0.5px solid var(--border); }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      .hero { flex-direction: column; gap: 1.5rem; padding: 2.5rem 0 2rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .edu-item { flex-direction: column; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Madhav Agrawal</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="port">
+
+  <div class="hero">
+    <div class="hero-avatar">MA</div>
+    <div class="hero-text">
+      <h1>Madhav Agrawal</h1>
+      <p class="tagline">CS undergrad at LNMIIT · Embedded systems intern · Builder of real-world software</p>
+      <div class="hero-tags">
+        <span class="hero-tag">B.Tech CSE · 2024–2028</span>
+        <span class="hero-tag">Jaipur, India</span>
+        <span class="hero-tag">Open to opportunities</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" id="about">
+    <div class="section-label">About</div>
+    <p class="about-text">I'm a second-year Computer Science student at The LNM Institute of Information Technology, Jaipur, with a strong interest in systems programming, embedded software, and full-stack development. Currently interning at Spanidea Systems, where I'm working with RTOS concepts and OpenWrt on embedded Linux platforms. I enjoy building things that solve real problems — from synchronized audio streaming to healthcare management systems.</p>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="section-label">Skills</div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-pills">
+          <span class="skill-pill">C</span>
+          <span class="skill-pill">C++</span>
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Systems & Tools</div>
+        <div class="skill-pills">
+          <span class="skill-pill">RTOS / FreeRTOS</span>
+          <span class="skill-pill">OpenWrt</span>
+          <span class="skill-pill">Embedded Linux</span>
+          <span class="skill-pill">VS Code</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Concepts</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Data Structures</span>
+          <span class="skill-pill">Algorithms</span>
+          <span class="skill-pill">Multithreading</span>
+          <span class="skill-pill">APIs</span>
+          <span class="skill-pill">AI / ML</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Other</div>
+        <div class="skill-pills">
+          <span class="skill-pill">MS Excel</span>
+          <span class="skill-pill">Video Editing</span>
+          <span class="skill-pill">Video Production</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="experience">
+    <div class="section-label">Experience</div>
+    <div class="exp-item">
+      <div class="exp-dot"></div>
+      <div class="exp-content">
+        <h3>Embedded Systems Intern — Spanidea Systems</h3>
+        <div class="exp-meta">2025 · Present</div>
+        <p class="exp-desc">Working on real-time operating systems with a focus on RTOS core concepts using FreeRTOS — tasks, scheduling, queues, semaphores, and inter-task communication. Concurrently exploring OpenWrt, including building and flashing custom firmware images for embedded Linux platforms such as the Raspberry Pi.</p>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-dot"></div>
+      <div class="exp-content">
+        <h3>Theatre Club Coordinator — LNMIIT</h3>
+        <div class="exp-meta">2024 · Present</div>
+        <p class="exp-desc">Coordinating events and productions for the college theatre club, managing logistics and team collaboration across multiple college events.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="section-label">Projects</div>
+    <div class="projects-grid">
+      <div class="proj-card">
+        <div class="proj-icon"><i class="ti ti-bluetooth" aria-hidden="true"></i></div>
+        <div class="proj-name">BlueCast</div>
+        <p class="proj-desc">A software-based system enabling synchronized audio streaming from a single Windows device to multiple Bluetooth audio devices simultaneously — no extra hardware required. Tackles the classic Bluetooth single-output limitation through a multi-device streaming architecture.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Bluetooth</span>
+          <span class="proj-tag">Real-time audio</span>
+          <span class="proj-tag">Multithreading</span>
+          <span class="proj-tag">Networking</span>
+          <span class="proj-tag">OS concepts</span>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon"><i class="ti ti-heart-rate-monitor" aria-hidden="true"></i></div>
+        <div class="proj-name">MedSync</div>
+        <p class="proj-desc">A full-stack healthcare management platform that digitizes medical workflows for patients and providers — covering appointment scheduling, patient records, medication tracking, and real-time communication through a clean, responsive interface.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Full-stack</span>
+          <span class="proj-tag">API integration</span>
+          <span class="proj-tag">Database</span>
+          <span class="proj-tag">Auth</span>
+          <span class="proj-tag">Responsive UI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Education</div>
+    <div class="edu-item">
+      <div>
+        <div class="edu-name">B.Tech, Computer Science & Engineering</div>
+        <div class="edu-sub">The LNM Institute of Information Technology, Jaipur</div>
+      </div>
+      <div class="edu-year">2024 – 2028</div>
+    </div>
+    <div class="edu-item">
+      <div>
+        <div class="edu-name">Senior Secondary (XII), CBSE — Science</div>
+        <div class="edu-sub">St. Annes Sr Sec School, Jodhpur · 89.8%</div>
+      </div>
+      <div class="edu-year">2024</div>
+    </div>
+    <div class="edu-item">
+      <div>
+        <div class="edu-name">Secondary (X), CBSE</div>
+        <div class="edu-sub">St. Annes Sr Sec School, Jodhpur · 84.8%</div>
+      </div>
+      <div class="edu-year">2022</div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-label">Contact</div>
+    <div class="contact-row">
+      <a class="contact-btn" href="mailto:mpm.agrawal.48@gmail.com"><i class="ti ti-mail" aria-hidden="true"></i> mpm.agrawal.48@gmail.com</a>
+      <a class="contact-btn" href="tel:+919530097783"><i class="ti ti-phone" aria-hidden="true"></i> +91 95300 97783</a>
+      <a class="contact-btn" href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn</a>
+      <a class="contact-btn" href="YOUR_GITHUB_URL" target="_blank" rel="noopener"><i class="ti ti-brand-github" aria-hidden="true"></i> GitHub</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>Madhav Agrawal · 2025</footer>
+
+</body>
+</html>
