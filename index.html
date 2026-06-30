@@ -293,7 +293,7 @@
       <div class="exp-dot"></div>
       <div class="exp-content">
         <h3>Embedded Systems Intern — Spanidea Systems</h3>
-        <div class="exp-meta">June 2026 · Present</div>
+        <div class="exp-meta">Jodhpur (Remote) · June 2026 - August 2026</div>
         <p class="exp-desc">Working on real-time operating systems with a focus on RTOS core concepts using FreeRTOS — tasks, scheduling, queues, semaphores, and inter-task communication. Concurrently exploring OpenWrt, including building and flashing custom firmware images for embedded Linux platforms such as the Raspberry Pi.</p>
       </div>
     </div>
@@ -309,7 +309,7 @@
       <div class="exp-dot"></div>
       <div class="exp-content">
         <h3>Theatre Club Coordinator — LNMIIT</h3>
-        <div class="exp-meta">2026 · Present</div>
+        <div class="exp-meta">March 2026 - March 2027</div>
         <p class="exp-desc">Coordinating events and productions for the college theatre club, managing logistics and team collaboration across multiple college events.</p>
       </div>
     </div>
@@ -320,7 +320,7 @@
     <div class="projects-grid">
       <div class="proj-card">
         <div class="proj-icon"><i class="ti ti-bluetooth" aria-hidden="true"></i></div>
-<a class="proj-name" href="https://github.com/clone-maddy/BlueCast" target="_blank" rel="noopener" style="text-decoration:none; color:var(--text-primary);">BlueCast <i class="ti ti-external-link" style="font-size:13px; color:var(--text-muted);"></i></a>
+        <div class="proj-name">BlueCast</div>
         <p class="proj-desc">A software-based system enabling synchronized audio streaming from a single Windows device to multiple Bluetooth audio devices simultaneously — no extra hardware required. Tackles the classic Bluetooth single-output limitation through a multi-device streaming architecture.</p>
         <div class="proj-tags">
           <span class="proj-tag">Bluetooth</span>
@@ -332,7 +332,7 @@
       </div>
       <div class="proj-card">
         <div class="proj-icon"><i class="ti ti-heart-rate-monitor" aria-hidden="true"></i></div>
-<a class="proj-name" href="https://github.com/clone-maddy/MedSync" target="_blank" rel="noopener" style="text-decoration:none; color:var(--text-primary);">MedSync <i class="ti ti-external-link" style="font-size:13px; color:var(--text-muted);"></i></a>
+        <div class="proj-name">MedSync</div>
         <p class="proj-desc">A full-stack healthcare management platform that digitizes medical workflows for patients and providers — covering appointment scheduling, patient records, medication tracking, and real-time communication through a clean, responsive interface.</p>
         <div class="proj-tags">
           <span class="proj-tag">Full-stack</span>
@@ -375,14 +375,19 @@
     <div class="contact-row">
       <a class="contact-btn" href="mailto:mpm.agrawal.48@gmail.com"><i class="ti ti-mail" aria-hidden="true"></i> mpm.agrawal.48@gmail.com</a>
       <a class="contact-btn" href="tel:+919530097783"><i class="ti ti-phone" aria-hidden="true"></i> +91 95300 97783</a>
-      <a class="contact-btn" href="https://linkedin.com/in/madhav-agrawal-38939b362" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn</a>
-      <a class="contact-btn" href="https://github.com/clone-maddy" target="_blank" rel="noopener"><i class="ti ti-brand-github" aria-hidden="true"></i> GitHub</a>
+      <a class="contact-btn" href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn</a>
+      <a class="contact-btn" href="YOUR_GITHUB_URL" target="_blank" rel="noopener"><i class="ti ti-brand-github" aria-hidden="true"></i> GitHub</a>
     </div>
   </section>
 
 </div>
 
-<footer>Madhav Agrawal · 2026</footer>
+<footer>Madhav Agrawal · <span id="last-updated"></span></footer>
+<script>
+  const d = new Date(document.lastModified);
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  document.getElementById("last-updated").textContent = "Last updated " + months[d.getMonth()] + " " + d.getFullYear();
+</script>
 
 </body>
 </html>
